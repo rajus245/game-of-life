@@ -19,13 +19,6 @@ pipeline {
          }
       }
 
-      stage('archiving artifacts and publish test results') {
-          steps {
-              archive 'target/*.war'
-              junit 'target/surefire-reports/*.xml'
-          }
-      }
-
       stage('Build and Push Image') {
          steps {
             sh 'sudo docker image build -t ${REPOSITORY_TAG} .'
